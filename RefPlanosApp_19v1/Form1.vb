@@ -461,35 +461,42 @@ Public Class frmRef
 
         MsgBox("Seleccionar sólo los planos tipo Assembly a referenciar", MsgBoxStyle.ApplicationModal + MsgBoxStyle.OkOnly)
 
+1:
         DwgEn = Nothing
         DwgEn = Dwg.GetDrawingSelector.GetSelected
+
+        Do While DwgEn.MoveNext
+            DwgObj = DwgEn.Current
+            If InStr(DwgObj.ToString, "Assembly") = 0 Then
+                MsgBox("Existen planos seleccionados que no son de fabricación", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Error de Selección")
+                GoTo 1
+            End If
+        Loop
 
         AttCont = ""
 
         For Each AssDwg In DwgEn
-            If InStr(AssDwg.ToString, "Assembly") <> 0 Then
-                Dim Marca As String
-                Marca = AssDwg.Mark
+            Dim Marca As String
+            Marca = AssDwg.Mark
 
-                If InStr(Marca, " ") Then
-                    Marca = Mid(Marca, 1, InStr(Marca, " ") - 1)
-                End If
-
-                Marca = Replace(Replace(Replace(Marca, ".", ""), "[", ""), "]", "")
-
-                For i = 0 To nn - 1
-                    If InStr(InfoDwg(i), "  1" & Chr(13) & Chr(10) & Marca & Chr(13)) <> 0 Then
-                        If AttCont = "" Or AttCont = " " Then
-                            AttCont = Info(i)
-                        ElseIf InStr(AttCont, Info(i)) = 0 Then
-                            AttCont = AttCont & "/" & Info(i)
-                        End If
-                    End If
-                Next i
-
-                AssDwg.Title2 = AttCont
-                AssDwg.CommitChanges()
+            If InStr(Marca, " ") Then
+                Marca = Mid(Marca, 1, InStr(Marca, " ") - 1)
             End If
+
+            Marca = Replace(Replace(Replace(Marca, ".", ""), "[", ""), "]", "")
+
+            For i = 0 To nn - 1
+                If InStr(InfoDwg(i), "  1" & Chr(13) & Chr(10) & Marca & Chr(13)) <> 0 Then
+                    If AttCont = "" Or AttCont = " " Then
+                        AttCont = Info(i)
+                    ElseIf InStr(AttCont, Info(i)) = 0 Then
+                        AttCont = AttCont & "/" & Info(i)
+                    End If
+                End If
+            Next i
+
+            AssDwg.Title2 = AttCont
+            AssDwg.CommitChanges()
         Next
     End Sub
 
