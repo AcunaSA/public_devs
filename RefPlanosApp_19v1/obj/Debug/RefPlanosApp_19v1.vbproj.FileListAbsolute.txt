@@ -1,0 +1,35 @@
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\bin\Debug\RefPlanosApp_19.0v1.exe.config
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\obj\Debug\Interop.Scripting.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\obj\Debug\RefPlanosApp_19v1.vbproj.ResolveComReference.cache
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\obj\Debug\RefPlanosApp_19.0v1.exe
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\obj\Debug\RefPlanosApp_19.0v1.xml
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\obj\Debug\RefPlanosApp_19.0v1.pdb
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\bin\Debug\Ref.ico
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\bin\Debug\RefPlanosApp_19.0v1.exe.manifest
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\bin\Debug\RefPlanosApp_19.0v1.application
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\bin\Debug\RefPlanosApp_19.0v1.exe
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\bin\Debug\RefPlanosApp_19.0v1.pdb
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\bin\Debug\RefPlanosApp_19.0v1.xml
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\bin\Debug\System.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\bin\Debug\System.Drawing.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\bin\Debug\System.Windows.Forms.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\bin\Debug\System.Xml.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\bin\Debug\System.Xml.Linq.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\bin\Debug\Tekla.Structures.Plugins.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\bin\Debug\Tekla.Technology.Scripting.Plugins.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\bin\Debug\Mono.Cecil.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\bin\Debug\Tekla.Structures.Plugins.xml
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\bin\Debug\Interop.Scripting.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\obj\Debug\RefPlanosApp_19v1.vbprojResolveAssemblyReference.cache
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\obj\Debug\RefPlanosApp_V190v1.frmRef.resources
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\obj\Debug\RefPlanosApp_V190v1.Resources.resources
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\obj\Debug\RefPlanosApp_19v1.vbproj.GenerateResource.Cache
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\obj\Debug\RefPlanosApp_19.0v1.TrustInfo.xml
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\obj\Debug\RefPlanosApp_19.0v1.exe.manifest
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_19v1\obj\Debug\RefPlanosApp_19.0v1.application
+C:\GitHub\public_devs\RefPlanosApp_19v1\bin\Debug\RefPlanosApp_19.0v1.exe.config
+C:\GitHub\public_devs\RefPlanosApp_19v1\obj\Debug\Interop.Scripting.dll
+C:\GitHub\public_devs\RefPlanosApp_19v1\obj\Debug\RefPlanosApp_19v1.vbproj.ResolveComReference.cache
+C:\GitHub\public_devs\RefPlanosApp_19v1\obj\Debug\RefPlanosApp_19.0v1.exe
+C:\GitHub\public_devs\RefPlanosApp_19v1\obj\Debug\RefPlanosApp_19.0v1.xml
+C:\GitHub\public_devs\RefPlanosApp_19v1\obj\Debug\RefPlanosApp_19.0v1.pdb
