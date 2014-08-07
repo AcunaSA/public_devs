@@ -41,10 +41,17 @@ Public Class frmRef
     Dim Mt1(0) As String
     Dim Fila As Long
 
+    Dim SinRef As String
+
     Private Sub cmdRef_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdRef.Click
+        Dim Planos As Integer
+        Dim Archivos As System.Collections.ObjectModel.ReadOnlyCollection(Of String)
+
         On Error Resume Next
 
         Call CopiarMacros()
+
+        SinRef = Nothing
 
         UI = New Tekla.Structures.Model.UI.ModelObjectSelector
         ModelObjEnumBm = UI.GetSelectedObjects
@@ -82,8 +89,7 @@ Public Class frmRef
         End If
 
         If cmbRef.Text = "Herrick" Then
-            If MsgBox("Se borraran los datos almacenados en el atributo '" & "Title 2" & "'" & Chr(13) & "¿Desea Continuar?", MsgBoxStyle.YesNo, _
-                      "Confirmación") = MsgBoxResult.No Then
+            If MsgBox("Antes de continuar, asegurese que los planos tipo Assembly estén ACTUALIZADOS", MsgBoxStyle.YesNo, "Confirmación") = MsgBoxResult.No Then
                 Exit Sub
             End If
         Else
@@ -98,24 +104,25 @@ Public Class frmRef
         End If
 
         lblStatus.Text = "Generando archivos DXF..."
-        Tekla.Structures.Model.Operations.Operation.RunMacro("PLT_DXF.cs")
-        Do While Tekla.Structures.Model.Operations.Operation.IsMacroRunning
-            My.Application.DoEvents()
-            Total = 0
-            Contar = 0
-            Do Until Total = DwgEn.GetSize
-                DwgContar = Dir$(CarpModelo & "\PlotFiles\*.dxf")
-                Contar = 0
-                Do While DwgContar <> ""
-                    Contar = Contar + 1
-                    DwgContar = Dir$()
-                Loop
+        Planos = Dwg.GetDrawingSelector.GetSelected.GetSize
 
-                Total = Contar
-                ProgressBar1.Value = Total / DwgEn.GetSize * 100
-                Application.DoEvents()
-            Loop
-        Loop
+        DwgEn = Dwg.GetDrawingSelector.GetSelected
+
+        Dim i As Integer
+        Dim impresora As Tekla.Structures.Drawing.PrintAttributes
+
+        i = 0
+        impresora = New Tekla.Structures.Drawing.PrintAttributes
+        impresora.PrintArea = Tekla.Structures.Drawing.DotPrintAreaType.EntireDrawing
+        impresora.PrinterInstance = "DXF"
+        impresora.Orientation = Tekla.Structures.Drawing.DotPrintOrientationType.Auto
+        impresora.Scale = 1
+
+        For Each Dibujo As Tekla.Structures.Drawing.Drawing In DwgEn
+            i = i + 1
+            ProgresoBarra(i, DwgEn.GetSize)
+            Dwg.PrintDrawing(Dibujo, impresora, ".\PlotFiles\" + Dibujo.Title1 + ".dxf")
+        Next
 
         Call VerificarDXF()
 
@@ -167,7 +174,9 @@ Public Class frmRef
 
         'Para el caso de que sea Herrick, conduce al nuevo procedimiento que sólo utiliza información desde planos
         If cmbRef.Text = "Herrick" Then
-                Call RecorrerHerrick()
+            Call RecorrerHerrick()
+            Call InfoUsuarioHerrick()
+
         Else
             'Verifica cantidad de elementos que sean partes y recorre los planos de montaje buscando la marca de assembly en ellos
             Progreso = 0
@@ -243,6 +252,20 @@ Public Class frmRef
             ProgressBar1.Value = 100
 
             MsgBox("Completado. Debe grabar el modelo", MsgBoxStyle.Information, "Referencias Incorporadas")
+        End If
+    End Sub
+
+    Private Sub InfoUsuarioHerrick()
+        If SinRef = Nothing Then
+            MsgBox("Las referencias han sido importadas. No existen elementos sin referencia de montaje", MsgBoxStyle.Information, "Importación Completa")
+        Else
+            MsgBox("La referencia ha sido importada. Presione ""Aceptar"" para ver las marcas sin referencia de montaje", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Información")
+
+            My.Computer.FileSystem.DeleteFile(Modelo.GetInfo.ModelPath + "\log_referencias.txt", FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.DeletePermanently)
+
+            My.Computer.FileSystem.WriteAllText(Modelo.GetInfo.ModelPath + "\log_referencias.txt", "Las siguientes marcas no tienen montaje de referencia:" + vbCrLf + vbCrLf + SinRef, True, System.Text.Encoding.Default)
+
+            Shell("notepad.exe " + Modelo.GetInfo.ModelPath + "\log_referencias.txt", AppWinStyle.NormalFocus)
         End If
     End Sub
 
@@ -458,32 +481,57 @@ Public Class frmRef
 
     Private Sub RecorrerHerrick()
         Dim AssDwg As Tekla.Structures.Drawing.Drawing
+        Dim Planos As Integer
+        Dim i As Integer
+        Dim n As Integer
 
         MsgBox("Seleccionar sólo los planos tipo Assembly a referenciar", MsgBoxStyle.ApplicationModal + MsgBoxStyle.OkOnly)
 
 1:
         DwgEn = Nothing
         DwgEn = Dwg.GetDrawingSelector.GetSelected
+        Planos = DwgEn.GetSize
 
+        i = 0
+        lblStatus.Text = "Comprobando planos tipo Assembly..."
         Do While DwgEn.MoveNext
+            i = i + 1
             DwgObj = DwgEn.Current
             If InStr(DwgObj.ToString, "Assembly") = 0 Then
-                MsgBox("Existen planos seleccionados que no son de fabricación", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Error de Selección")
+                If MsgBox("Existen planos seleccionados que no son de fabricación, seleccione nuevamente y reintente", MsgBoxStyle.Critical + MsgBoxStyle.RetryCancel, "Error de Selección") _
+                    = MsgBoxResult.Cancel Then
+
+                    End
+                End If
+
                 GoTo 1
             End If
+
+            ProgresoBarra(i, Planos)
+            My.Application.DoEvents()
         Loop
 
         AttCont = ""
 
+        DwgEn = Nothing
+        DwgEn = Dwg.GetDrawingSelector.GetSelected
+        Planos = DwgEn.GetSize
+
+        n = 0
+        lblStatus.Text = "Asignando Referencias..."
         For Each AssDwg In DwgEn
             Dim Marca As String
             Marca = AssDwg.Mark
+
+            n = n + 1
+            ProgresoBarra(n, Planos)
 
             If InStr(Marca, " ") Then
                 Marca = Mid(Marca, 1, InStr(Marca, " ") - 1)
             End If
 
             Marca = Replace(Replace(Replace(Marca, ".", ""), "[", ""), "]", "")
+            AttCont = Nothing
 
             For i = 0 To nn - 1
                 If InStr(InfoDwg(i), "  1" & Chr(13) & Chr(10) & Marca & Chr(13)) <> 0 Then
@@ -495,8 +543,22 @@ Public Class frmRef
                 End If
             Next i
 
-            AssDwg.Title2 = AttCont
+            If AttCont = Nothing Then
+                If SinRef = "" Or SinRef = " " Then
+                    SinRef = Marca
+                ElseIf InStr(SinRef, Marca) = 0 Then
+                    SinRef = SinRef & vbCrLf & Marca
+                End If
+
+                AssDwg.Title2 = ""
+            Else
+                AssDwg.Title2 = AttCont
+            End If
+            AssDwg.Title1 = Replace(Marca, "A", "")
+            AssDwg.Modify()
             AssDwg.CommitChanges()
+
+            My.Application.DoEvents()
         Next
     End Sub
 
