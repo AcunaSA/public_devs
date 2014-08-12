@@ -41,24 +41,17 @@ Public Class frmRef
     Dim Mt1(0) As String
     Dim Fila As Long
 
-    Dim SinRef As String
-
     Private Sub cmdRef_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmdRef.Click
-        Dim Planos As Integer
-        Dim Archivos As System.Collections.ObjectModel.ReadOnlyCollection(Of String)
-
         On Error Resume Next
 
         Call CopiarMacros()
-
-        SinRef = Nothing
 
         UI = New Tekla.Structures.Model.UI.ModelObjectSelector
         ModelObjEnumBm = UI.GetSelectedObjects
         CantMod = ModelObjEnumBm.GetSize
         CarpModelo = Modelo.GetInfo.ModelPath
 
-        If CantMod = 0 And cmbRef.Text <> "Herrick" Then
+        If CantMod = 0 Then
             MsgBox("Debe seleccionar los elementos en el modelo", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Error")
             Exit Sub
         End If
@@ -83,20 +76,14 @@ Public Class frmRef
             Loop
         End If
 
-        If cmbAtributos.Text = "" And cmbRef.Text <> "Herrick" Then
+        If cmbAtributos.Text = "" Then
             MsgBox("Debe Seleccionar un Atributo", MsgBoxStyle.Critical, "Error de Atributo")
             Exit Sub
         End If
 
-        If cmbRef.Text = "Herrick" Then
-            If MsgBox("Antes de continuar, asegurese que los planos tipo Assembly estén ACTUALIZADOS", MsgBoxStyle.YesNo, "Confirmación") = MsgBoxResult.No Then
-                Exit Sub
-            End If
-        Else
-            If MsgBox("Se borraran los datos almacenados en el atributo '" & cmbAtributos.Text & "'" & Chr(13) & "¿Desea Continuar?", MsgBoxStyle.YesNo, _
-                      "Confirmación") = MsgBoxResult.No Then
-                Exit Sub
-            End If
+        If MsgBox("Se borraran los datos almacenados en el atributo '" & cmbAtributos.Text & "'" & Chr(13) & "¿Desea Continuar?", MsgBoxStyle.YesNo, _
+                  "Confirmación") = MsgBoxResult.No Then
+            Exit Sub
         End If
 
         If Dir$(CarpModelo & "\PlotFiles", FileAttribute.Directory) <> "" Then
@@ -104,25 +91,24 @@ Public Class frmRef
         End If
 
         lblStatus.Text = "Generando archivos DXF..."
-        Planos = Dwg.GetDrawingSelector.GetSelected.GetSize
+        Tekla.Structures.Model.Operations.Operation.RunMacro("PLT_DXF.cs")
+        Do While Tekla.Structures.Model.Operations.Operation.IsMacroRunning
+            My.Application.DoEvents()
+            Total = 0
+            Contar = 0
+            Do Until Total = DwgEn.GetSize
+                DwgContar = Dir$(CarpModelo & "\PlotFiles\*.dxf")
+                Contar = 0
+                Do While DwgContar <> ""
+                    Contar = Contar + 1
+                    DwgContar = Dir$()
+                Loop
 
-        DwgEn = Dwg.GetDrawingSelector.GetSelected
-
-        Dim i As Integer
-        Dim impresora As Tekla.Structures.Drawing.PrintAttributes
-
-        i = 0
-        impresora = New Tekla.Structures.Drawing.PrintAttributes
-        impresora.PrintArea = Tekla.Structures.Drawing.DotPrintAreaType.EntireDrawing
-        impresora.PrinterInstance = "DXF"
-        impresora.Orientation = Tekla.Structures.Drawing.DotPrintOrientationType.Auto
-        impresora.Scale = 1
-
-        For Each Dibujo As Tekla.Structures.Drawing.Drawing In DwgEn
-            i = i + 1
-            ProgresoBarra(i, DwgEn.GetSize)
-            Dwg.PrintDrawing(Dibujo, impresora, ".\PlotFiles\" + Dibujo.Title1 + ".dxf")
-        Next
+                Total = Contar
+                ProgressBar1.Value = Total / DwgEn.GetSize * 100
+                Application.DoEvents()
+            Loop
+        Loop
 
         Call VerificarDXF()
 
@@ -172,101 +158,80 @@ Public Class frmRef
         Loop
         Txt = ""
 
-        'Para el caso de que sea Herrick, conduce al nuevo procedimiento que sólo utiliza información desde planos
-        If cmbRef.Text = "Herrick" Then
-            Call RecorrerHerrick()
-            Call InfoUsuarioHerrick()
+        'Verifica cantidad de elementos que sean partes y recorre los planos de montaje buscando la marca de assembly en ellos
+        Progreso = 0
+        ProgressBar1.Value = 0
+        Do While ModelObjEnumBm.MoveNext
+            ModelObj = ModelObjEnumBm.Current
 
-        Else
-            'Verifica cantidad de elementos que sean partes y recorre los planos de montaje buscando la marca de assembly en ellos
-            Progreso = 0
+            If cmbRef.Text = "Estándar" Then
+                If InStr(UCase(ModelObj.ToString), "BEAM") <> 0 Or InStr(UCase(ModelObj.ToString), "CONTOURPLATE") <> 0 Or _
+                InStr(UCase(ModelObj.ToString), "POLYBEAM") <> 0 Then
+                    Call RecorrerMontajes()
+                End If
+            ElseIf cmbRef.Text = "Hanford" Then
+                If InStr(UCase(ModelObj.ToString), "BEAM") <> 0 Or InStr(UCase(ModelObj.ToString), "CONTOURPLATE") <> 0 Or _
+                InStr(UCase(ModelObj.ToString), "POLYBEAM") <> 0 Then
+                    Call RecorrerMontajesHanford()
+                End If
+            ElseIf cmbRef.Text = "Fluor Techint Referencias" Then
+                If InStr(UCase(ModelObj.ToString), "BEAM") <> 0 Or InStr(UCase(ModelObj.ToString), "CONTOURPLATE") <> 0 Or _
+                InStr(UCase(ModelObj.ToString), "POLYBEAM") <> 0 Then
+                    Call RecorrerMontajesFluorRef()
+                End If
+            ElseIf cmbRef.Text = "Fluor Techint" Then
+                If InStr(UCase(ModelObj.ToString), "BEAM") <> 0 Or InStr(UCase(ModelObj.ToString), "CONTOURPLATE") <> 0 Or _
+                InStr(UCase(ModelObj.ToString), "POLYBEAM") <> 0 Then
+                    Call RecorrerFluorTechint()
+                End If
+            End If
+
+            If Salida = True Then
+                Exit Sub
+            End If
+            Progreso = Progreso + 1
+            ProgressBar1.Value = Progreso / CantMod * 100
+            Application.DoEvents()
+        Loop
+        ModelObjEnumBm = Nothing
+
+        'Modelo.CommitChanges()
+
+        'Ingreso a Hanford, asignación de marcas nuevamente
+        If cmbRef.Text = "Hanford" Then
             ProgressBar1.Value = 0
+            UI = New Tekla.Structures.Model.UI.ModelObjectSelector
+            ModelObjEnumBm = UI.GetSelectedObjects
+            CantMod = ModelObjEnumBm.GetSize
+            Progreso = 0
+
             Do While ModelObjEnumBm.MoveNext
                 ModelObj = ModelObjEnumBm.Current
 
-                If cmbRef.Text = "Estándar" Then
-                    If InStr(UCase(ModelObj.ToString), "BEAM") <> 0 Or InStr(UCase(ModelObj.ToString), "CONTOURPLATE") <> 0 Or _
+                If InStr(UCase(ModelObj.ToString), "BEAM") <> 0 Or InStr(UCase(ModelObj.ToString), "CONTOURPLATE") <> 0 Or _
                     InStr(UCase(ModelObj.ToString), "POLYBEAM") <> 0 Then
-                        Call RecorrerMontajes()
-                    End If
-                ElseIf cmbRef.Text = "Hanford" Then
-                    If InStr(UCase(ModelObj.ToString), "BEAM") <> 0 Or InStr(UCase(ModelObj.ToString), "CONTOURPLATE") <> 0 Or _
-                    InStr(UCase(ModelObj.ToString), "POLYBEAM") <> 0 Then
-                        Call RecorrerMontajesHanford()
-                    End If
-                ElseIf cmbRef.Text = "Fluor Techint Referencias" Then
-                    If InStr(UCase(ModelObj.ToString), "BEAM") <> 0 Or InStr(UCase(ModelObj.ToString), "CONTOURPLATE") <> 0 Or _
-                    InStr(UCase(ModelObj.ToString), "POLYBEAM") <> 0 Then
-                        Call RecorrerMontajesFluorRef()
-                    End If
-                ElseIf cmbRef.Text = "Fluor Techint" Then
-                    If InStr(UCase(ModelObj.ToString), "BEAM") <> 0 Or InStr(UCase(ModelObj.ToString), "CONTOURPLATE") <> 0 Or _
-                    InStr(UCase(ModelObj.ToString), "POLYBEAM") <> 0 Then
-                        Call RecorrerFluorTechint()
-                    End If
+                    Call HanfordRefMulti()
                 End If
 
-                If Salida = True Then
-                    Exit Sub
-                End If
                 Progreso = Progreso + 1
                 ProgressBar1.Value = Progreso / CantMod * 100
-                Application.DoEvents()
+                My.Application.DoEvents()
             Loop
-            ModelObjEnumBm = Nothing
-
-            'Modelo.CommitChanges()
-
-            'Ingreso a Hanford, asignación de marcas nuevamente
-            If cmbRef.Text = "Hanford" Then
-                ProgressBar1.Value = 0
-                UI = New Tekla.Structures.Model.UI.ModelObjectSelector
-                ModelObjEnumBm = UI.GetSelectedObjects
-                CantMod = ModelObjEnumBm.GetSize
-                Progreso = 0
-
-                Do While ModelObjEnumBm.MoveNext
-                    ModelObj = ModelObjEnumBm.Current
-
-                    If InStr(UCase(ModelObj.ToString), "BEAM") <> 0 Or InStr(UCase(ModelObj.ToString), "CONTOURPLATE") <> 0 Or _
-                        InStr(UCase(ModelObj.ToString), "POLYBEAM") <> 0 Then
-                        Call HanfordRefMulti()
-                    End If
-
-                    Progreso = Progreso + 1
-                    ProgressBar1.Value = Progreso / CantMod * 100
-                    My.Application.DoEvents()
-                Loop
-            End If
-
-            lblStatus.Text = "Verificando marcas en el modelo..."
-            Call VerificarMarcas()
-
-            'Si el modelo es de FluorTechint, se ponen las revisiones en PRELIM_MARK del modelo
-            If cmbRef.Text = "Fluor Techint" Then
-                PonerRevision()
-                ImportarAtt()
-            End If
-
-            lblStatus.Text = ""
-            ProgressBar1.Value = 100
-
-            MsgBox("Completado. Debe grabar el modelo", MsgBoxStyle.Information, "Referencias Incorporadas")
         End If
-    End Sub
 
-    Private Sub InfoUsuarioHerrick()
-        If SinRef = Nothing Then
-            MsgBox("Las referencias han sido importadas. No existen elementos sin referencia de montaje", MsgBoxStyle.Information, "Importación Completa")
-        Else
-            MsgBox("La referencia ha sido importada. Presione ""Aceptar"" para ver las marcas sin referencia de montaje", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Información")
+        lblStatus.Text = "Verificando marcas en el modelo..."
+        Call VerificarMarcas()
 
-            My.Computer.FileSystem.DeleteFile(Modelo.GetInfo.ModelPath + "\log_referencias.txt", FileIO.UIOption.OnlyErrorDialogs, FileIO.RecycleOption.DeletePermanently)
-
-            My.Computer.FileSystem.WriteAllText(Modelo.GetInfo.ModelPath + "\log_referencias.txt", "Las siguientes marcas no tienen montaje de referencia:" + vbCrLf + vbCrLf + SinRef, True, System.Text.Encoding.Default)
-
-            Shell("notepad.exe " + Modelo.GetInfo.ModelPath + "\log_referencias.txt", AppWinStyle.NormalFocus)
+        'Si el modelo es de FluorTechint, se ponen las revisiones en PRELIM_MARK del modelo
+        If cmbRef.Text = "Fluor Techint" Then
+            PonerRevision()
+            ImportarAtt()
         End If
+
+        lblStatus.Text = ""
+        ProgressBar1.Value = 100
+
+        MsgBox("Completado. Debe grabar el modelo", MsgBoxStyle.Information, "Referencias Incorporadas")
     End Sub
 
     Private Sub frmRef_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -479,89 +444,6 @@ Public Class frmRef
         End If
     End Sub
 
-    Private Sub RecorrerHerrick()
-        Dim AssDwg As Tekla.Structures.Drawing.Drawing
-        Dim Planos As Integer
-        Dim i As Integer
-        Dim n As Integer
-
-        MsgBox("Seleccionar sólo los planos tipo Assembly a referenciar", MsgBoxStyle.ApplicationModal + MsgBoxStyle.OkOnly)
-
-1:
-        DwgEn = Nothing
-        DwgEn = Dwg.GetDrawingSelector.GetSelected
-        Planos = DwgEn.GetSize
-
-        i = 0
-        lblStatus.Text = "Comprobando planos tipo Assembly..."
-        Do While DwgEn.MoveNext
-            i = i + 1
-            DwgObj = DwgEn.Current
-            If InStr(DwgObj.ToString, "Assembly") = 0 Then
-                If MsgBox("Existen planos seleccionados que no son de fabricación, seleccione nuevamente y reintente", MsgBoxStyle.Critical + MsgBoxStyle.RetryCancel, "Error de Selección") _
-                    = MsgBoxResult.Cancel Then
-
-                    End
-                End If
-
-                GoTo 1
-            End If
-
-            ProgresoBarra(i, Planos)
-            My.Application.DoEvents()
-        Loop
-
-        AttCont = ""
-
-        DwgEn = Nothing
-        DwgEn = Dwg.GetDrawingSelector.GetSelected
-        Planos = DwgEn.GetSize
-
-        n = 0
-        lblStatus.Text = "Asignando Referencias..."
-        For Each AssDwg In DwgEn
-            Dim Marca As String
-            Marca = AssDwg.Mark
-
-            n = n + 1
-            ProgresoBarra(n, Planos)
-
-            If InStr(Marca, " ") Then
-                Marca = Mid(Marca, 1, InStr(Marca, " ") - 1)
-            End If
-
-            Marca = Replace(Replace(Replace(Marca, ".", ""), "[", ""), "]", "")
-            AttCont = Nothing
-
-            For i = 0 To nn - 1
-                If InStr(InfoDwg(i), "  1" & Chr(13) & Chr(10) & Marca & Chr(13)) <> 0 Then
-                    If AttCont = "" Or AttCont = " " Then
-                        AttCont = Info(i)
-                    ElseIf InStr(AttCont, Info(i)) = 0 Then
-                        AttCont = AttCont & ", " & Info(i)
-                    End If
-                End If
-            Next i
-
-            If AttCont = Nothing Then
-                If SinRef = "" Or SinRef = " " Then
-                    SinRef = Marca
-                ElseIf InStr(SinRef, Marca) = 0 Then
-                    SinRef = SinRef & vbCrLf & Marca
-                End If
-
-                AssDwg.Title2 = ""
-            Else
-                AssDwg.Title2 = AttCont
-            End If
-            AssDwg.Title1 = Replace(Marca, "A", "")
-            AssDwg.Modify()
-            AssDwg.CommitChanges()
-
-            My.Application.DoEvents()
-        Next
-    End Sub
-
     Private Sub RecorrerFluorTechint()
         Dim NumObj As String
 
@@ -617,13 +499,12 @@ Public Class frmRef
         cmbAtributos.Items.Add("USER_FIELD_3")
         cmbAtributos.Items.Add("USER_FIELD_4")
         cmbAtributos.Items.Add("APPROVAL_OTHER")
-        cmbAtributos.Items.Add("SS_Comment")
+        cmbAtributos.Items.Add("SS_E_DWG")
 
         cmbRef.Items.Add("Estándar")
         cmbRef.Items.Add("Fluor Techint")
         cmbRef.Items.Add("Fluor Techint Referencias")
         cmbRef.Items.Add("Hanford")
-        cmbRef.Items.Add("Herrick")
     End Sub
 
     Private Sub VerificarDXF()
@@ -831,13 +712,6 @@ Public Class frmRef
 
             ModelObj.SetUserProperty("comment", comment)
             ModelObj.SetUserProperty("PRELIM_MARK", Prelim_Mark)
-        End If
-    End Sub
-
-    Private Sub cmbRef_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbRef.SelectedIndexChanged
-        If cmbRef.Text = "Herrick" Then
-            cmbAtributos.Enabled = False
-            cmbAtributos.SelectedIndex = -1
         End If
     End Sub
 End Class

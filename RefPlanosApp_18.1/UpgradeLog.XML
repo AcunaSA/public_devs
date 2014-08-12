@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="RefPlanosApp_17">
+</Property><Property Name="Solution File" Value="C:\Visual_Project\RefPlanosApp_17\RefPlanosApp_17\RefPlanosApp_17.sln">
+</Property><Property Name="Date" Value="miércoles, 25 de mayo de 2011">
+</Property><Property Name="Time" Value="17:35:51">
+</Property></Properties><Event ErrorLevel="0" Project="RefPlanosApp_17" Source="RefPlanosApp_17.vbproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="RefPlanosApp_17" Source="RefPlanosApp_17.vbproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="RefPlanosApp_17" Source="RefPlanosApp_17.vbproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

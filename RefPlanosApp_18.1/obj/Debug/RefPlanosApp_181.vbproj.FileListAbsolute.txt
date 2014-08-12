@@ -1,0 +1,94 @@
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\obj\Debug\Interop.Microsoft.Vbe.Interop.Forms.dll
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\obj\Debug\Interop.Scripting.dll
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\obj\Debug\RefPlanosApp_181.vbproj.ResolveComReference.cache
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\bin\Debug\RefPlanosApp_18.1.exe.config
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\bin\Debug\Ref.ico
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\bin\Debug\RefPlanosApp_18.1.exe
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\bin\Debug\RefPlanosApp_18.1.pdb
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\bin\Debug\RefPlanosApp_18.1.xml
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\bin\Debug\System.Data.DataSetExtensions.dll
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\bin\Debug\System.Data.dll
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\bin\Debug\System.Deployment.dll
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\bin\Debug\System.dll
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\bin\Debug\System.Drawing.dll
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\bin\Debug\System.IO.Log.dll
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\bin\Debug\System.Windows.Forms.dll
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\bin\Debug\System.Xml.dll
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\bin\Debug\System.Xml.Linq.dll
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\bin\Debug\Tekla.Structures.Plugins.dll
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\bin\Debug\Tekla.Technology.Scripting.Plugins.dll
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\bin\Debug\Mono.Cecil.dll
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\bin\Debug\Tekla.Structures.Plugins.xml
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\bin\Debug\stdole.dll
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\bin\Debug\Interop.Microsoft.Vbe.Interop.Forms.dll
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\bin\Debug\Interop.Scripting.dll
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\obj\Debug\ResolveAssemblyReference.cache
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\obj\Debug\RefPlanosApp_V18_1.frmRef.resources
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\obj\Debug\RefPlanosApp_V18_1.Resources.resources
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\obj\Debug\GenerateResource.read.1.tlog
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\obj\Debug\GenerateResource.write.1.tlog
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\obj\Debug\RefPlanosApp_18.1.exe
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\obj\Debug\RefPlanosApp_18.1.xml
+C:\PROGRAMAS_API\RefPlanosApp_18.1\RefPlanosApp_18.1\obj\Debug\RefPlanosApp_18.1.pdb
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\bin\Debug\RefPlanosApp_18.1.exe.config
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\obj\Debug\Interop.Microsoft.Vbe.Interop.Forms.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\obj\Debug\Interop.Scripting.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\obj\Debug\RefPlanosApp_181.vbproj.ResolveComReference.cache
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\obj\Debug\RefPlanosApp_18.1.exe
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\obj\Debug\RefPlanosApp_18.1.xml
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\obj\Debug\RefPlanosApp_18.1.pdb
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\bin\Debug\Ref.ico
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\bin\Debug\RefPlanosApp_18.1.exe
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\bin\Debug\RefPlanosApp_18.1.pdb
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\bin\Debug\RefPlanosApp_18.1.xml
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\bin\Debug\System.Data.DataSetExtensions.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\bin\Debug\System.Data.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\bin\Debug\System.Deployment.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\bin\Debug\System.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\bin\Debug\System.Drawing.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\bin\Debug\System.IO.Log.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\bin\Debug\System.Windows.Forms.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\bin\Debug\System.Xml.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\bin\Debug\System.Xml.Linq.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\bin\Debug\Mono.Cecil.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\bin\Debug\stdole.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\bin\Debug\Interop.Microsoft.Vbe.Interop.Forms.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\bin\Debug\Interop.Scripting.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\obj\Debug\RefPlanosApp_V18_1.frmRef.resources
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\obj\Debug\RefPlanosApp_V18_1.Resources.resources
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\bin\Debug\Tekla.Structures.Plugins.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\bin\Debug\Tekla.Technology.Scripting.Plugins.dll
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\bin\Debug\Tekla.Structures.Plugins.xml
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\obj\Debug\RefPlanosApp_181.vbprojResolveAssemblyReference.cache
+U:\Andres Flores\Mis Documentos\Visual Studio 2010\Projects\RefPlanosApp_18.1\obj\Debug\RefPlanosApp_181.vbproj.GenerateResource.Cache
+C:\GitHub\public_devs\RefPlanosApp_18.1\bin\Debug\RefPlanosApp_18.1.exe.config
+C:\GitHub\public_devs\RefPlanosApp_18.1\obj\Debug\Interop.Microsoft.Vbe.Interop.Forms.dll
+C:\GitHub\public_devs\RefPlanosApp_18.1\obj\Debug\Interop.Scripting.dll
+C:\GitHub\public_devs\RefPlanosApp_18.1\obj\Debug\RefPlanosApp_181.vbproj.ResolveComReference.cache
+C:\GitHub\public_devs\RefPlanosApp_18.1\obj\Debug\RefPlanosApp_18.1.exe
+C:\GitHub\public_devs\RefPlanosApp_18.1\obj\Debug\RefPlanosApp_18.1.xml
+C:\GitHub\public_devs\RefPlanosApp_18.1\obj\Debug\RefPlanosApp_18.1.pdb
+C:\GitHub\public_devs\RefPlanosApp_18.1\bin\Debug\Ref.ico
+C:\GitHub\public_devs\RefPlanosApp_18.1\bin\Debug\RefPlanosApp_18.1.exe
+C:\GitHub\public_devs\RefPlanosApp_18.1\bin\Debug\RefPlanosApp_18.1.pdb
+C:\GitHub\public_devs\RefPlanosApp_18.1\bin\Debug\RefPlanosApp_18.1.xml
+C:\GitHub\public_devs\RefPlanosApp_18.1\bin\Debug\System.Data.DataSetExtensions.dll
+C:\GitHub\public_devs\RefPlanosApp_18.1\bin\Debug\System.Data.dll
+C:\GitHub\public_devs\RefPlanosApp_18.1\bin\Debug\System.Deployment.dll
+C:\GitHub\public_devs\RefPlanosApp_18.1\bin\Debug\System.dll
+C:\GitHub\public_devs\RefPlanosApp_18.1\bin\Debug\System.Drawing.dll
+C:\GitHub\public_devs\RefPlanosApp_18.1\bin\Debug\System.IO.Log.dll
+C:\GitHub\public_devs\RefPlanosApp_18.1\bin\Debug\System.Windows.Forms.dll
+C:\GitHub\public_devs\RefPlanosApp_18.1\bin\Debug\System.Xml.dll
+C:\GitHub\public_devs\RefPlanosApp_18.1\bin\Debug\System.Xml.Linq.dll
+C:\GitHub\public_devs\RefPlanosApp_18.1\bin\Debug\Tekla.Structures.Plugins.dll
+C:\GitHub\public_devs\RefPlanosApp_18.1\bin\Debug\Tekla.Technology.Scripting.Plugins.dll
+C:\GitHub\public_devs\RefPlanosApp_18.1\bin\Debug\Mono.Cecil.dll
+C:\GitHub\public_devs\RefPlanosApp_18.1\bin\Debug\Tekla.Structures.Plugins.xml
+C:\GitHub\public_devs\RefPlanosApp_18.1\bin\Debug\stdole.dll
+C:\GitHub\public_devs\RefPlanosApp_18.1\bin\Debug\Interop.Microsoft.Vbe.Interop.Forms.dll
+C:\GitHub\public_devs\RefPlanosApp_18.1\bin\Debug\Interop.Scripting.dll
+C:\GitHub\public_devs\RefPlanosApp_18.1\obj\Debug\RefPlanosApp_181.vbprojResolveAssemblyReference.cache
+C:\GitHub\public_devs\RefPlanosApp_18.1\obj\Debug\RefPlanosApp_V18_1.frmRef.resources
+C:\GitHub\public_devs\RefPlanosApp_18.1\obj\Debug\RefPlanosApp_V18_1.Resources.resources
+C:\GitHub\public_devs\RefPlanosApp_18.1\obj\Debug\RefPlanosApp_181.vbproj.GenerateResource.Cache

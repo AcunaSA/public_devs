@@ -1,0 +1,18 @@
+u:\andres flores\mis documentos\visual studio 2010\Projects\CNC_Adaptador\CNC_Adaptador\bin\Debug\CNC_Adaptador.exe
+u:\andres flores\mis documentos\visual studio 2010\Projects\CNC_Adaptador\CNC_Adaptador\bin\Debug\CNC_Adaptador.pdb
+u:\andres flores\mis documentos\visual studio 2010\Projects\CNC_Adaptador\CNC_Adaptador\obj\x86\Debug\WindowsFormsApplication1.frmPrincipal.resources
+u:\andres flores\mis documentos\visual studio 2010\Projects\CNC_Adaptador\CNC_Adaptador\obj\x86\Debug\CNC_Adaptador.csproj.GenerateResource.Cache
+u:\andres flores\mis documentos\visual studio 2010\Projects\CNC_Adaptador\CNC_Adaptador\obj\x86\Debug\CNC_Adaptador.exe
+u:\andres flores\mis documentos\visual studio 2010\Projects\CNC_Adaptador\CNC_Adaptador\obj\x86\Debug\CNC_Adaptador.pdb
+u:\andres flores\mis documentos\visual studio 2010\Projects\CNC_Adaptador\CNC_Adaptador\bin\Debug\Shared Add-in.ico
+u:\andres flores\mis documentos\visual studio 2010\Projects\CNC_Adaptador\CNC_Adaptador\obj\x86\Debug\CNC_Adaptador_AFG.Properties.Resources.resources
+u:\andres flores\mis documentos\visual studio 2010\Projects\CNC_Adaptador\CNC_Adaptador\obj\x86\Debug\CNC_Adaptador.csprojResolveAssemblyReference.cache
+C:\GitHub\public_devs\CNC_Adaptador\CNC_Adaptador\obj\x86\Debug\CNC_Adaptador.exe
+C:\GitHub\public_devs\CNC_Adaptador\CNC_Adaptador\obj\x86\Debug\CNC_Adaptador.pdb
+C:\GitHub\public_devs\CNC_Adaptador\CNC_Adaptador\bin\Debug\Shared Add-in.ico
+C:\GitHub\public_devs\CNC_Adaptador\CNC_Adaptador\bin\Debug\CNC_Adaptador.exe
+C:\GitHub\public_devs\CNC_Adaptador\CNC_Adaptador\bin\Debug\CNC_Adaptador.pdb
+C:\GitHub\public_devs\CNC_Adaptador\CNC_Adaptador\obj\x86\Debug\CNC_Adaptador.csprojResolveAssemblyReference.cache
+C:\GitHub\public_devs\CNC_Adaptador\CNC_Adaptador\obj\x86\Debug\WindowsFormsApplication1.frmPrincipal.resources
+C:\GitHub\public_devs\CNC_Adaptador\CNC_Adaptador\obj\x86\Debug\CNC_Adaptador_AFG.Properties.Resources.resources
+C:\GitHub\public_devs\CNC_Adaptador\CNC_Adaptador\obj\x86\Debug\CNC_Adaptador.csproj.GenerateResource.Cache
